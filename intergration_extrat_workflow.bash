@@ -16,10 +16,13 @@ bwa mem -t 40 -o all.sam\
 /home/guanguiwen/data2/zengwanjia/c57bl6_pUC19-HBV-pUC19/L1EGF080745--HBVTGmiceZWJ.R1.raw.fastq.gz \
 /home/guanguiwen/data2/zengwanjia/c57bl6_pUC19-HBV-pUC19/L1EGF080745--HBVTGmiceZWJ.R2.raw.fastq.gz
 
+#sam转bam
 samtools view -bS -@ 40 all.sam > all.bam
 
-sort -m 1G -@ 44 all.bam >all.sort.bam
+#排序
+samtools sort -m 1G -@ 44 all.bam >all.sort.bam
 
+#建索引
 samtools index all.sort.bam
 
 #提取HBV序列

@@ -1,14 +1,13 @@
-#格式化HBV基因组，并追加到c57参考基因组中
+#格式化HBV基因组，将一行展示的fasta文件以一行60个字符的形式展现，并追加到c57参考基因组中
 perl fasta_split_certain_length.pl pUC19-HBV-pUC19.fa 60 > pUC19-HBV-pUC19.60.fa
-
+# 改个名儿
 cp Mus_musculus_c57bl6nj.C57BL_6NJ_v1.dna_sm.toplevel.fa \
 Mus_musculus_c57bl6nj.C57BL_6NJ_v1.dna_sm.toplevel.pUC19-HBV-pUC19.fa
-
+#将60个字符为一行的HBV参考基因组追加写入c57参考基因组的末尾
 cat pUC19-HBV-pUC19.60.fa >> \
 Mus_musculus_c57bl6nj.C57BL_6NJ_v1.dna_sm.toplevel.pUC19-HBV-pUC19.fa
 
-
-#对HBV_c57混合基因组建立bwa的index
+#对c57_HBV混合基因组建立bwa的index
 bwa index  Mus_musculus_c57bl6nj.C57BL_6NJ_v1.dna_sm.toplevel.pUC19-HBV-pUC19.fa -p c57bl6_pUC19-HBV-pUC19
 
 #序列比对及排序

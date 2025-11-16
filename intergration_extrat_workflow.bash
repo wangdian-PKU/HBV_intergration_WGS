@@ -25,7 +25,7 @@ samtools sort -m 1G -@ 44 all.bam >all.sort.bam
 #建索引
 samtools index all.sort.bam
 
-#提取与c57-HBV比对之后比对上pUC19-HBV-pUC19的序列（因为不止HBV序列 还有宿主的参考序列），即为HBV序列
+#提取与c57-HBV比对之后比对上pUC19-HBV-pUC19的序列（因为不止HBV序列 还有宿主的参考序列），即为HBV序列。从all.sort.bam中提取出 RNAME = pUC19-HBV-pUC19 的比对结果
 samtools view -h all.sort.bam pUC19-HBV-pUC19 >all.sort.bam.HBV.sam
 
 #通过脚本提取带有HBV整合的全部比对信息，从all.sam中根据名字来在all.sort.bam.HBV.sam中提取

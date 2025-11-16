@@ -28,7 +28,7 @@ samtools index all.sort.bam
 #提取与c57-HBV比对之后比对上pUC19-HBV-pUC19的序列（因为不止HBV序列 还有宿主的参考序列），即为HBV序列。从all.sort.bam中提取出 RNAME = pUC19-HBV-pUC19 的比对结果
 samtools view -h all.sort.bam pUC19-HBV-pUC19 >all.sort.bam.HBV.sam
 
-#通过脚本提取带有HBV整合的全部比对信息，从all.sam中根据名字来在all.sort.bam.HBV.sam中提取
+#通过脚本提取带有HBV整合的全部比对信息，从all.sam中根据名字来在all.sort.bam.HBV.sam中提取。上面一步是筛出了带HBV序列的reads，在所有比对结果中找出与这个reads匹配的mate_reads
 perl extract_sam_read_from_another_sam_by_name.pl all.sort.bam.HBV.sam all.sam \
 > all.pUC19-HBV-pUC19.complete.sam
 

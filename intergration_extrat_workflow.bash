@@ -33,15 +33,15 @@ perl extract_sam_read_from_another_sam_by_name.pl all.sort.bam.HBV.sam all.sam \
 > all.pUC19-HBV-pUC19.complete.sam
 
 #给补充匹配结果填补配对read信息，以达到bedtools软件的要求
-perl Complete_sam_for_bedtools.pl all.pUC19-HBV-pUC19.all.sam \
->all.pUC19-HBV-pUC19.all.complete.sam
+perl Complete_sam_for_bedtools.pl all.pUC19-HBV-pUC19.complete.sam \
+>all.pUC19-HBV-pUC19.bedtools_complete.sam
 
 #sam 文件转bedpe格式
-bedtools bamtobed -bedpe -i all.pUC19-HBV-pUC19.all.complete.sam \
->all.pUC19-HBV-pUC19.all.complete.sam.bedpe
+bedtools bamtobed -bedpe -i all.pUC19-HBV-pUC19.bedtools_complete.sam \
+>all.pUC19-HBV-pUC19.bedtools_complete.sam.bedpe
 
 #结果排序
-sort  -k 1,1 -k 4,4 -k 2n,2n -k 5n,5n all.pUC19-HBV-pUC19.all.complete.sam.bedpe \
->all.pUC19-HBV-pUC19.all.complete.sam.sort.bedpe
+sort  -k 1,1 -k 4,4 -k 2n,2n -k 5n,5n all.pUC19-HBV-pUC19.bedtools_complete.sam.bedpe \
+>all.pUC19-HBV-pUC19.bedtools_complete.sam.sort.bedpe
 
 
